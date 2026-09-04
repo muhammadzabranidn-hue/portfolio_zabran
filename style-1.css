@@ -1,0 +1,694 @@
+/* ======================================================
+     EDIT DI SINI: semua warna, font, dan jarak diatur lewat
+     variabel di bawah ini. Ubah nilainya untuk mengubah
+     tampilan di seluruh halaman.
+  ====================================================== */
+  :root{
+    --color-bg:            #f8fafc;   /* background utama light */
+    --color-hero-bg:       #ffffff;   /* container light */
+    --color-accent:        #0066ff;   /* ACCENT COLOR BIRU */
+    --color-text-primary:  #0f172a;   /* teks utama gelap */
+    --color-text-muted:    #64748b;   /* teks abu-abu / deskripsi */
+    --color-text-faint:    #94a3b8;   /* teks abu-abu terang */
+    --color-border:        #e2e8f0;
+    --color-btn-dark-bg:   #0066ff;   /* tombol utama warna accent biru */
+    --color-btn-dark-text: #ffffff;
+    --color-btn-light-bg:  #ffffff;
+    --color-btn-light-text:#0f172a;
+    --color-overlay-bg:    rgba(15, 23, 42, 0.65);
+    --color-overlay-text:  #ffffff;
+
+    --font-display: "Inter", -apple-system, Segoe UI, sans-serif;
+    --font-body:    "Inter", -apple-system, Segoe UI, sans-serif;
+
+    --radius-lg: 28px;
+    --radius-md: 16px;
+    --radius-full: 999px;
+
+    --container-max: 1240px;
+    --section-padding: 32px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  .wrapper{
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--section-padding);
+  }
+
+  /* ---------------- NAVBAR ---------------- */
+  .navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 28px var(--section-padding);
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family: var(--font-display);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-mark{
+    width:30px;
+    height:30px;
+    border-radius: 8px;
+    background: var(--color-accent); /* Logo mark menggunakan aksen biru */
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family: var(--font-display);
+    font-weight:700;
+    font-size:16px;
+  }
+
+  .nav-links{
+    display:flex;
+    gap:38px;
+    list-style:none;
+  }
+
+  .nav-links a{
+    color: var(--color-text-primary);
+    text-decoration:none;
+    font-size:15px;
+    font-weight:500;
+    position:relative;
+    padding-bottom:4px;
+  }
+
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0%;
+    height:1.5px;
+    background: var(--color-accent); /* Line hover menjadi biru */
+    transition: width .3s cubic-bezier(.4,0,.2,1);
+  }
+
+  .nav-links a:hover::after{ width:100%; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding: 13px 24px;
+    border-radius: var(--radius-full);
+    font-size:14.5px;
+    font-weight:600;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition: transform .35s cubic-bezier(.22,1,.36,1),
+                box-shadow .35s cubic-bezier(.22,1,.36,1),
+                background-color .35s ease,
+                color .35s ease,
+                border-color .35s ease;
+  }
+
+  .btn-dark{
+    background: var(--color-btn-dark-bg);
+    color: var(--color-btn-dark-text);
+  }
+  .btn-dark:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -8px rgba(0, 102, 255, 0.45);
+  }
+  .btn-dark:active{ transform: translateY(0); }
+
+  .btn-light{
+    background: var(--color-btn-light-bg);
+    color: var(--color-btn-light-text);
+    border-color: var(--color-border);
+  }
+  .btn-light:hover{
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    box-shadow: 0 8px 20px -10px rgba(0, 102, 255, 0.15);
+  }
+  .btn-light:active{ transform: translateY(0); }
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    max-width: var(--container-max);
+    margin: 10px auto 0;
+    padding: 0 var(--section-padding);
+  }
+
+  .hero-card{
+    background: var(--color-hero-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items:stretch;
+    overflow:hidden;
+    position:relative;
+    min-height: 620px;
+    box-shadow: 0 10px 30px -10px rgba(0, 102, 255, 0.05);
+  }
+
+  /* ---------------- AVAILABILITY BADGE ---------------- */
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: 14.5px;
+    font-weight: 500;
+    width: max-content;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #55b56a; /* Kembali ke hijau ketersediaan */
+    border-radius: 50%;
+    animation: status-pulse 2s infinite;
+  }
+
+  @keyframes status-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(85, 157, 100, 0.6);
+    }
+    70% {
+      box-shadow: 0 0 0 6px rgba(85, 157, 100, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(85, 157, 100, 0);
+    }
+  }
+
+  .hero-content{
+    padding: 64px 24px 64px 56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    z-index:2;
+  }
+
+  .hero-title{
+    font-family: var(--font-display);
+    font-weight:600;
+    font-size: clamp(38px, 4.6vw, 56px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+
+  .hero-title .muted{ color: var(--color-text-faint); }
+
+  .hero-desc{
+    margin-top:22px;
+    max-width: 420px;
+    color: var(--color-text-muted);
+    font-size:16.5px;
+    line-height:1.6;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    margin-top:32px;
+  }
+
+  .hero-stats{
+    display:flex;
+    gap:44px;
+    margin-top:48px;
+  }
+
+  .stat-number{
+    font-family: var(--font-display);
+    font-weight:600;
+    font-size:30px;
+    color: var(--color-text-primary);
+  }
+
+  .stat-label{
+    margin-top:4px;
+    font-size:13.5px;
+    color: var(--color-text-muted);
+  }
+
+  /* ---------------- HERO IMAGE ---------------- */
+  .hero-image-outer{
+    padding: 20px 20px 20px 0;
+    height:100%;
+    min-height:620px;
+  }
+
+  .hero-image-wrap{
+    position:relative;
+    overflow:hidden;
+    height:100%;
+    width:100%;
+    border-radius: var(--radius-md);
+    box-shadow: 0 24px 48px -20px rgba(15, 23, 42, 0.15);
+    cursor: pointer;
+  }
+
+  .hero-image-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position: 50% 20%;
+    filter: grayscale(1) contrast(1.05);
+    transform: scale(1);
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+    will-change: transform;
+  }
+
+  /* Kartu overlay "Available for projects" */
+  .hero-overlay-card{
+    position:absolute;
+    left:32px;
+    right:32px;
+    bottom:32px;
+    z-index:3;
+    background: var(--color-overlay-bg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    color: var(--color-overlay-text);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: transform .35s ease, background .35s ease;
+  }
+
+  .hero-overlay-card:hover{
+    transform: translateY(-3px);
+  }
+
+  .overlay-eyebrow{
+    font-size:12.5px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom:6px;
+  }
+
+  .overlay-title{
+    font-family: var(--font-display);
+    font-weight:600;
+    font-size:19px;
+  }
+
+  .overlay-desc{
+    margin-top:6px;
+    font-size:13px;
+    line-height:1.5;
+    color: rgba(255,255,255,0.8);
+    max-width: 260px;
+  }
+
+  .overlay-arrow{
+    flex-shrink:0;
+    width:48px;
+    height:48px;
+    border-radius: 12px;
+    background: var(--color-accent);
+    color: #ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), background .35s ease;
+  }
+
+  .hero-overlay-card:hover .overlay-arrow{
+    transform: rotate(45deg);
+    background: #ffffff;
+    color: var(--color-accent);
+  }
+
+   /* ---------------- LOGO MARQUEE (MODERN CARD VERSION) ---------------- */
+.logos-section {
+  padding: 60px var(--section-padding, 24px);
+}
+
+.logo-marquee {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 12px 0; /* Space untuk shadow pas hover */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* <== UBAH DI SINI: jarak antar kartu logo */
+  width: max-content;
+  animation: scroll-left 35s linear infinite; /* <== UBAH "35s" DI SINI: makin kecil = makin cepat gesernya */
+  will-change: transform;
+}
+
+.logo-marquee:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* Base Card Styling */
+.logo-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px 12px 14px; /* <== UBAH DI SINI: besar/kecil kartu (padding dalam) */
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 99px;
+  cursor: pointer;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Icon Container */
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;  /* <== UBAH DI SINI: lebar lingkaran ikon */
+  height: 46px; /* <== UBAH DI SINI: tinggi lingkaran ikon (samakan dgn width) */
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--logo-color, #333);
+  font-family: var(--font-display, sans-serif);
+  font-size: 20px; /* <== UBAH DI SINI: ukuran huruf/simbol di dalam ikon */
+  font-weight: 800;
+  transition: all 0.35s ease;
+}
+
+.logo-label {
+  font-size: 18px; /* <== UBAH DI SINI: ukuran teks nama skill (mis. "HTML5") */
+  font-weight: 600;
+  color: #2d3748;
+  transition: color 0.3s ease;
+}
+
+/* Small Indicator Dot */
+.logo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  margin-left: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hover States (Brand Color Aware) */
+.logo-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #ffffff;
+  border-color: var(--logo-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05),
+              0 0 15px -3px var(--logo-color);
+}
+
+.logo-item:hover .logo-icon {
+  background: var(--logo-color);
+  color: #ffffff;
+  transform: rotate(-8deg);
+}
+
+.logo-item:hover .logo-dot {
+  background: var(--logo-color);
+  box-shadow: 0 0 8px var(--logo-color);
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Jarak antarmarquee */
+.logo-marquee + .logo-marquee {
+  margin-top: 16px;
+}
+
+/* Animasi khusus geser ke kanan */
+.logo-track.track-reverse {
+  animation: scroll-right 35s linear infinite;
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+  /* ---------------- RESPONSIVE ---------------- */
+  @media (max-width: 900px){
+    .hero-card{
+      grid-template-columns:1fr;
+      min-height:auto;
+    }
+    .hero-content{ padding: 44px 28px 32px; }
+    .hero-image-outer{ padding: 20px 20px 0 20px; min-height:380px; order:-1; }
+    .hero-overlay-card{ flex-wrap:wrap; }
+    .navbar{ flex-wrap:wrap; gap:16px; padding: 20px var(--section-padding); }
+    .nav-links{ order:3; gap:22px; flex-wrap:wrap; }
+    .hero-stats{ gap:28px; flex-wrap:wrap; }
+  }
+
+  @media (max-width: 520px){
+    .hero-actions{ flex-wrap:wrap; }
+    .hero-title{ font-size: 34px; }
+  }
+
+ /* =========================================================
+   LIGHT BENTO SERVICES / ABOUT SECTION (BLUE ACCENT)
+========================================================= */
+.resume {
+  --r-bg: #f8fafc;
+  --r-container-bg: #ffffff;
+  --r-card-bg: #f8fafc;
+  --r-card-hover: #e2e8f0;
+  --r-border: #ffffff;
+  --r-accent: #0066ff; /* Warna Biru Accent */
+  --r-text: #0f172a;
+  --r-text-muted: #64748b;
+
+  background: var(--r-bg);
+  color: var(--r-text);
+  padding: 80px var(--section-padding, 20px);
+}
+
+.resume-inner {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+}
+
+/* Outer Container (Bento Card Raksasa Light) */
+.services-bento-container {
+  background: var(--r-container-bg);
+  border: 1px solid var(--r-border);
+  border-radius: 28px;
+  padding: 48px 40px;
+  box-shadow: 0 10px 30px -10px rgba(0, 102, 255, 0.05);
+}
+
+/* Section Header */
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  gap: 24px;
+}
+
+.resume-eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--r-accent);
+  margin-bottom: 8px;
+}
+
+.resume-title {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 0;
+  color: var(--r-text);
+  line-height: 1.1;
+}
+
+.resume-title .dot {
+  color: var(--r-accent);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 400px;
+}
+
+.header-right p {
+  font-size: 14px;
+  color: var(--r-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.btn-circle-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--r-border);
+  background: var(--r-card-bg);
+  color: var(--r-text);
+  text-decoration: none;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-circle-arrow:hover {
+  background: var(--r-accent);
+  border-color: var(--r-accent);
+  color: #ffffff;
+}
+
+/* Bento Grid System */
+.resume-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Individual Bento Card Light */
+.r-card {
+  background: var(--r-card-bg);
+  border: 1px solid var(--r-border);
+  border-radius: 20px;
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 280px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.r-card:hover {
+  transform: translateY(-4px);
+  background: var(--r-card-hover);
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: 0 12px 24px -8px rgba(0, 102, 255, 0.12);
+}
+
+/* Icon Box (Warna Biru Accent) */
+.card-icon-box {
+  width: 48px;
+  height: 48px;
+  background: var(--r-accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 16px rgba(0, 102, 255, 0.25);
+}
+
+.r-card h3 {
+  font-family: var(--font-display, sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: var(--r-text);
+}
+
+.r-card p {
+  font-size: 13.5px;
+  color: var(--r-text-muted);
+  line-height: 1.5;
+  margin: 0 0 32px 0;
+}
+
+/* Circular Action Button Bottom-Right */
+.card-action-btn {
+  margin-top: auto;
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  color: var(--r-accent);
+  border: 1px solid var(--r-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.r-card:hover .card-action-btn {
+  transform: scale(1.1);
+  background: var(--r-accent);
+  border-color: var(--r-accent);
+  color: #ffffff;
+  transform: translateY(-px);
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .resume-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-bento-container {
+    padding: 32px 20px;
+  }
+  
+  .services-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}
