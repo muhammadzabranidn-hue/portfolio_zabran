@@ -56,6 +56,82 @@
     padding: 28px var(--section-padding);
     max-width: var(--container-max);
     margin: 0 auto;
+
+    /* Navbar dibuat fixed supaya selalu menempel di atas layar saat discroll */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent; /* transparan di posisi paling atas, sama seperti desain awal */
+
+    /* PENTING soal smoothness: semua properti yang dianimasikan di sini
+       harus bernilai angka (px/%), bukan keyword seperti "auto" atau
+       "max-content" — keyword tidak bisa di-interpolate CSS sehingga
+       transisinya "loncat" bukannya meluncur halus. Karena itu left &
+       right dipakai (bukan width/transform), nilainya dihitung otomatis
+       lewat JS (lihat main-1.js) supaya pill-nya pas dengan lebar konten. */
+    transition: top .5s cubic-bezier(.22,1,.36,1),
+                left .5s cubic-bezier(.22,1,.36,1),
+                right .5s cubic-bezier(.22,1,.36,1),
+                gap .5s cubic-bezier(.22,1,.36,1),
+                padding .5s cubic-bezier(.22,1,.36,1),
+                background-color .5s cubic-bezier(.22,1,.36,1),
+                border-radius .5s cubic-bezier(.22,1,.36,1),
+                box-shadow .5s cubic-bezier(.22,1,.36,1),
+                backdrop-filter .5s cubic-bezier(.22,1,.36,1),
+                -webkit-backdrop-filter .5s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* Beri jarak di bawah body sebesar tinggi navbar supaya konten tidak
+     tertutup navbar yang sekarang fixed. Nilainya diisi otomatis lewat JS
+     (lihat main-1.js) supaya selalu presisi mengikuti tinggi asli navbar. */
+  body{
+    padding-top: var(--navbar-offset, 96px);
+  }
+
+  /* ---------------- NAVBAR: STATE SAAT DISCROLL ----------------
+     BACKGROUND (warna, blur, radius, shadow) + jarak antar elemen
+     dibuat lebih rapat & pill-nya lebih kecil (fit content, bukan
+     dari ujung ke ujung) supaya persis seperti referensi. Isi/teks
+     navbar tidak diubah, cuma jarak & lebar wadahnya. */
+  .navbar.is-scrolled{
+    top: 14px;
+    left: var(--navbar-inset, 14px);
+    right: var(--navbar-inset, 14px);
+    justify-content: center;
+    gap: 36px;
+    padding: 10px 20px;
+    background: rgba(15, 23, 42, 0.75);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+    border-radius: var(--radius-full);
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.35);
+  }
+
+  .navbar.is-scrolled .nav-links{
+    gap: 24px;
+  }
+
+  /* Teks & elemen navbar menyesuaikan supaya tetap kontras di atas
+     background gelap saat discroll (warna saja, bukan konten/desain). */
+  .navbar.is-scrolled .logo{
+    color: #ffffff;
+  }
+
+  .navbar.is-scrolled .nav-links a{
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .navbar.is-scrolled .nav-links a::after{
+    background: #ffffff;
+  }
+
+  /* Tombol LinkedIn tetap ukuran normal (sama seperti state awal),
+     cuma warnanya yang disesuaikan supaya kontras di atas background gelap. */
+  .navbar.is-scrolled .btn-dark{
+    background: #ffffff;
+    color: #0f172a;
   }
 
   .logo{
@@ -281,7 +357,6 @@
     height:100%;
     object-fit:cover;
     object-position: 50% 20%;
-    filter: grayscale(1) contrast(1.05);
     transform: scale(1);
     transition: transform .5s cubic-bezier(.22,1,.36,1);
     will-change: transform;
@@ -491,204 +566,222 @@
  /* =========================================================
    LIGHT BENTO SERVICES / ABOUT SECTION (BLUE ACCENT)
 ========================================================= */
-.resume {
-  --r-bg: #f8fafc;
-  --r-container-bg: #ffffff;
-  --r-card-bg: #f8fafc;
-  --r-card-hover: #e2e8f0;
-  --r-border: #ffffff;
-  --r-accent: #0066ff; /* Warna Biru Accent */
-  --r-text: #0f172a;
-  --r-text-muted: #64748b;
+/* ================= ABOUT (TANPA CARD, 2 KOLOM) =================
+   Hero adalah section "berbentuk card" sebelum marquee (pembatas).
+   Setelah marquee, section-section berikutnya (termasuk About ini)
+   TIDAK dibungkus card lagi — konten duduk langsung di atas
+   background halaman. Tetap konsisten dengan Hero lewat warna aksen
+   biru (--color-accent), font-family (--font-display), dan tombol
+   yang reuse komponen .btn.btn-dark yang sama persis (termasuk
+   animasi hover-nya) dengan tombol "View Projects" di Hero.
 
-  background: var(--r-bg);
-  color: var(--r-text);
-  padding: 80px var(--section-padding, 20px);
-}
+   Layout dibuat 2 kolom (judul+tombol+grid di kiri, paragraf di
+   kanan, dipisah garis vertikal) dan lebar penuh mengikuti container,
+   supaya beda proporsi dari kolom teks Hero yang lebih sempit. */
 
-.resume-inner {
-  max-width: var(--container-max, 1200px);
+.about {
+  max-width: var(--container-max);
   margin: 0 auto;
+  padding: 90px var(--section-padding) 100px;
 }
 
-/* Outer Container (Bento Card Raksasa Light) */
-.services-bento-container {
-  background: var(--r-container-bg);
-  border: 1px solid var(--r-border);
-  border-radius: 28px;
-  padding: 48px 40px;
-  box-shadow: 0 10px 30px -10px rgba(0, 102, 255, 0.05);
+.about-inner{
+  width: 100%;
 }
 
-/* Section Header */
-.services-header {
+/* Konten dibuat selebar container (tidak dibatasi lagi) supaya
+   proporsinya terasa jauh lebih lebar dibanding sebelumnya. */
+.about-content {
+  max-width: 100%;
+}
+
+.about-columns {
+  display: grid;
+  grid-template-columns: 1.35fr auto 1fr;
+  align-items: stretch;
+  gap: 64px;
+}
+
+.about-col-left,
+.about-col-right {
+  min-width: 0;
+}
+
+/* Kolom kanan (paragraf) & garis pemisah digeser turun supaya rata
+   dengan baris pertama JUDUL (bukan dengan label "01 ABOUT ME"),
+   persis seperti pada referensi. */
+.about-col-right {
+  margin-top: 44px;
+}
+
+/* Garis pemisah vertikal antar kolom */
+.about-divider {
+  align-self: stretch;
+  width: 1px;
+  margin-top: 44px;
+  background: var(--color-border);
+}
+
+/* Eyebrow "01 ─── ABOUT ME" */
+.about-eyebrow {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 40px;
-  gap: 24px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
-.resume-eyebrow {
-  display: block;
+.about-eyebrow-number {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+
+.about-eyebrow-line {
+  width: 70px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.about-eyebrow-label {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--r-accent);
-  margin-bottom: 8px;
+  color: var(--color-text-muted);
 }
 
-.resume-title {
-  font-family: var(--font-display, sans-serif);
-  font-weight: 700;
-  font-size: clamp(32px, 4vw, 48px);
-  margin: 0;
-  color: var(--r-text);
-  line-height: 1.1;
+/* Judul */
+.about-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
 }
 
-.resume-title .dot {
-  color: var(--r-accent);
+.about-title .accent {
+  color: var(--color-text-muted);
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  max-width: 400px;
+/* Paragraf (kolom kanan) */
+.about-text {
+  color: var(--color-text-muted);
+  font-size: 16px;
+  line-height: 1.75;
 }
 
-.header-right p {
-  font-size: 14px;
-  color: var(--r-text-muted);
-  line-height: 1.5;
-  margin: 0;
+.about-text p + p {
+  margin-top: 20px;
 }
 
-.btn-circle-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--r-border);
-  background: var(--r-card-bg);
-  color: var(--r-text);
-  text-decoration: none;
-  font-size: 18px;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
+/* Tombol "More About Me" (reuse .btn .btn-dark) */
+.about-cta {
+  margin-bottom: 44px;
 }
 
-.btn-circle-arrow:hover {
-  background: var(--r-accent);
-  border-color: var(--r-accent);
-  color: #ffffff;
-}
-
-/* Bento Grid System */
-.resume-grid {
+/* Bento Grid (4 Info Card) */
+.about-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-/* Individual Bento Card Light */
-.r-card {
-  background: var(--r-card-bg);
-  border: 1px solid var(--r-border);
-  border-radius: 20px;
-  padding: 32px 24px 24px;
+.about-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px 18px;
+  transition: transform .35s cubic-bezier(.22,1,.36,1),
+              border-color .35s cubic-bezier(.22,1,.36,1),
+              box-shadow .35s cubic-bezier(.22,1,.36,1);
+}
+
+.about-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: 0 12px 24px -10px rgba(0, 102, 255, 0.15);
+}
+
+.about-item-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--color-accent);
+}
+
+.about-item-text {
   display: flex;
   flex-direction: column;
-  position: relative;
-  min-height: 280px;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  gap: 3px;
+  min-width: 0;
 }
 
-.r-card:hover {
-  transform: translateY(-4px);
-  background: var(--r-card-hover);
-  border-color: rgba(0, 102, 255, 0.3);
-  box-shadow: 0 12px 24px -8px rgba(0, 102, 255, 0.12);
-}
-
-/* Icon Box (Warna Biru Accent) */
-.card-icon-box {
-  width: 48px;
-  height: 48px;
-  background: var(--r-accent);
+.about-item-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
+  background: var(--color-accent);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  margin-bottom: 28px;
   box-shadow: 0 6px 16px rgba(0, 102, 255, 0.25);
 }
 
-.r-card h3 {
-  font-family: var(--font-display, sans-serif);
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 12px 0;
-  color: var(--r-text);
+.about-item-label {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
 }
 
-.r-card p {
-  font-size: 13.5px;
-  color: var(--r-text-muted);
-  line-height: 1.5;
-  margin: 0 0 32px 0;
-}
-
-/* Circular Action Button Bottom-Right */
-.card-action-btn {
-  margin-top: auto;
-  align-self: flex-end;
-  width: 40px;
-  height: 40px;
-  background: #ffffff;
-  color: var(--r-accent);
-  border: 1px solid var(--r-border);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
+.about-item-value {
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.r-card:hover .card-action-btn {
-  transform: scale(1.1);
-  background: var(--r-accent);
-  border-color: var(--r-accent);
-  color: #ffffff;
-  transform: translateY(-px);
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--color-text-primary);
 }
 
 /* Responsiveness */
 @media (max-width: 992px) {
-  .resume-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .about {
+    padding: 70px var(--section-padding) 80px;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
+  /* Di bawah desktop, kolom kanan (paragraf) turun ke bawah kolom
+     kiri (judul + grid), garis pemisah berubah jadi horizontal. */
+  .about-columns {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .about-text {
+    margin-top: 0;
   }
 }
 
 @media (max-width: 640px) {
-  .services-bento-container {
-    padding: 32px 20px;
+  .about {
+    padding: 56px var(--section-padding) 64px;
   }
-  
-  .services-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .resume-grid {
+
+  .about-grid {
     grid-template-columns: 1fr;
   }
 }
