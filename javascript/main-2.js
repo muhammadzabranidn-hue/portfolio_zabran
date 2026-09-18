@@ -1,4 +1,4 @@
-// 1. SCROLL EFFECT UNTUK NAVBAR
+
 const navbar = document.getElementById('navbar');
 
 function handleScroll() {
@@ -9,7 +9,7 @@ function handleScroll() {
   }
 }
 
-// Set offset padding di body mengikuti tinggi navbar asli
+
 function updateNavbarOffset() {
   const height = navbar.offsetHeight;
   document.body.style.setProperty('--navbar-offset', `${height}px`);
@@ -22,8 +22,8 @@ window.addEventListener('DOMContentLoaded', () => {
   handleScroll();
 });
 
-// 2. COUNTDOWN TIMER LOGIC
-// Ganti tanggal berikut ke tanggal rilis yang diinginkan
+
+
 const launchDate = new Date("2026-12-31T00:00:00").getTime();
 
 const countdown = setInterval(() => {
