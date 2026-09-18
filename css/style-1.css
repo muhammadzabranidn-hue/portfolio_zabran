@@ -427,7 +427,22 @@
   }
 
    /* ---------------- LOGO MARQUEE (MODERN CARD VERSION) ---------------- */
-.logos-section {
+   .marquee-title-container {
+    text-align: center;
+    margin-bottom: 24px; /* Memberi jarak ke marquee di bawahnya */
+  }
+  
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-faint); /* Warna teks gelap yang modern */
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+
+   .logos-section {
   padding: 60px var(--section-padding, 24px);
 }
 

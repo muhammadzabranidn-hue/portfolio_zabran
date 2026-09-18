@@ -200,7 +200,7 @@
   .btn-light:active { transform: translateY(0); }
   
   /* ---------------- MAIN CONTAINER & HERO CARD ---------------- */
-  .main-container {
+  .main-container-about {
     flex: 1;
     display: flex;
     align-items: center;
@@ -211,7 +211,7 @@
     width: 100%;
   }
   
-  .hero-card {
+  .hero-card-about {
     background: var(--color-card-bg);
     border-radius: var(--radius-card);
     padding: 60px 40px;
