@@ -25,6 +25,6 @@ Selamat datang di repositori portofolio pribadi saya. Proyek ini dibuat untuk me
 
 Jika Anda ingin menjalankan proyek ini di mesin lokal, ikuti langkah-langkah berikut:
 
-1. **Kloning Repositori**
+1. **Mengkloning Repositori**
    ```bash
    git clone [https://github.com/username-kamu/portfolio-zabran.git](https://github.com/username-kamu/portfolio-zabran.git)
