@@ -439,33 +439,71 @@
   }
 
    /* ---------------- LOGO MARQUEE (MODERN CARD VERSION) ---------------- */
-   .marquee-title-container {
+   .section-header {
     text-align: center;
-    margin-bottom: 24px; /* Memberi jarak ke marquee di bawahnya */
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    padding: 0 1rem;
+    font-family: var(--font-display);
+    color: #ffffff;
+    margin-top: 100px;
+    font-weight: 600;
   }
   
-  .section-title {
-    font-family: var(--font-display);
-    font-size: 15px;
+  /* Badge (Icon + Text) */
+  .section-header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #3b82f6; /* Warna biru icon & teks badge */
+    font-size: 0.8125rem; /* 13px */
     font-weight: 600;
-    color: var(--color-text-faint); /* Warna teks gelap yang modern */
-    letter-spacing: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header .badge svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Judul Utama */
+  .section-header h2 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem 0;
+    color: #000000;
+  }
+  
+  /* Deskripsi */
+  .section-header p {
+    color: #94a3b8; /* Warna abu-abu terang */
+    font-size: 1.0625rem; /* ~17px */
+    line-height: 1.6;
     margin: 0;
+    font-weight: 400;
+    font-family: var(--font-display);
   }
 
 
-   .logos-section {
-  padding: 60px var(--section-padding, 24px);
-}
-
-.logo-marquee {
-  max-width: var(--container-max, 1200px);
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 12px 0; /* Space untuk shadow pas hover */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-          mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
+  .logos-section {
+    padding: 60px 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .logo-marquee {
+    width: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 12px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent);
+  }
 
 .logo-track {
   display: flex;
@@ -563,7 +601,7 @@
 
 /* Animasi khusus geser ke kanan */
 .logo-track.track-reverse {
-  animation: scroll-right 35s linear infinite;
+  animation: scroll-right 30s linear infinite;
 }
 
 @keyframes scroll-right {
@@ -609,6 +647,7 @@
 .about {
   max-width: var(--container-max);
   margin: 0 auto;
+  margin-top: -20px;
   padding: 90px var(--section-padding) 100px;
 }
 
