@@ -748,6 +748,11 @@
   margin-bottom: 44px;
 }
 
+.about-cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px -8px rgba(0, 102, 255, 0.45);
+}
+
 /* Bento Grid (4 Info Card) */
 .about-grid {
   display: grid;
