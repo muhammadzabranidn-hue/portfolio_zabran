@@ -928,6 +928,12 @@
 }
 
 
+.skills-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 24px -10px var(--color-accent);
+  transform: translateY(-3px);
+}
+
 .card-header {
   display: flex;
   align-items: center;
