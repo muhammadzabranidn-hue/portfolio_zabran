@@ -134,6 +134,115 @@
     color: #0f172a;
   }
 
+/* ---------------- DESKTOP (Default) ---------------- */
+/* Sembunyikan tombol LinkedIn yang ada di dalam menu saat di laptop/desktop */
+.nav-links .mobile-only {
+  display: none;
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-btn span {
+  width: 100%;
+  height: 2px;
+  background-color: #0f172a; /* Warna gelap agar kontras dengan BG putih */
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ---------------- MOBILE RESPONSIVE (< 768px) ---------------- */
+@media (max-width: 768px) {
+  /* Tampilkan hamburger */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Sembunyikan tombol LinkedIn desktop luar */
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Ubah nav-links menjadi GRID 2 Kolom */
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 14px;
+    right: 14px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    padding: 24px 28px !important;
+    border-radius: 20px;
+    list-style: none;
+
+    /* LAYOUT GRID: 2 kolom berjejer ke samping */
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px !important;
+    justify-items: start;
+    align-items: center;
+
+    /* Animasi Buka/Tutup */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Warna & ukuran teks link di dalam menu mobile */
+  .nav-links a {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 20px !important;
+    font-weight: 500;
+  }
+
+  /* Tombol LinkedIn (Mobile) tepat di bawah Experiences */
+  .nav-links .mobile-only {
+    display: block;
+    grid-column: 2; /* Posisikan di kolom kanan (kolom 2) */
+    grid-row: 3;    /* Posisikan di baris ke-3 */
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .nav-links .mobile-only .btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 8px 16px; /* Sesuaikan padding tombol agar pas */
+  }
+
+  /* State saat burger aktif diklik */
+  .nav-links.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* Animasi ikon 'X' untuk hamburger saat terbuka */
+  .hamburger-btn.is-active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger-btn.is-active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-btn.is-active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
   .logo{
     display:flex;
     align-items:center;

@@ -15,22 +15,35 @@
 <body>
 
   <!-- ================= NAVBAR ================= -->
-  <header class="navbar">
-    <div class="logo">
-      <span class="logo-mark">Z</span>
-      Zabran Assyafiq
-    </div>
+<header class="navbar">
+  <div class="logo">
+    <span class="logo-mark">Z</span>
+    Zabran Assyafiq
+  </div>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="staytoon.html">About</a></li>
-      <li><a href="staytoon.html">Projects</a></li>
-      <li><a href="staytoon.html">Experiences</a></li>
-      <li><a href="staytoon.html">Achievments</a></li>
-    </ul>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="staytoon.html">About</a></li>
+    <li><a href="staytoon.html">Projects</a></li>
+    <li><a href="staytoon.html">Experiences</a></li>
+    <li><a href="staytoon.html">Achievments</a></li>
+    
+    <!-- Tombol LinkedIn (Mobile Version: Masuk ke dalam list) -->
+    <li class="mobile-only">
+      <a href="https://www.linkedin.com/in/muhammad-zabran-assyafiq-2292ab308/" target="_blank" rel="noopener noreferrer" class="btn btn-dark">LinkedIn</a>
+    </li>
+  </ul>
 
-    <a href="https://www.linkedin.com/in/muhammad-zabran-assyafiq-2292ab308/" target="_blank" rel="noopener noreferrer" class="btn btn-dark">LinkedIn</a>
-  </header>
+  <!-- Tombol LinkedIn (Desktop Version) -->
+  <a href="https://www.linkedin.com/in/muhammad-zabran-assyafiq-2292ab308/" target="_blank" rel="noopener noreferrer" class="btn btn-dark desktop-only">LinkedIn</a>
+
+  <!-- Tombol Hamburger -->
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
   <!-- ================= HERO ================= -->
   <section class="hero">
