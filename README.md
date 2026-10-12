@@ -1,14 +1,35 @@
-# Portfolio Zabran
+# 🚀 Personal Portfolio Website — Zabran Assyafiq
 
-Selamat datang di repositori portofolio pribadi saya. Proyek ini dibuat untuk menampilkan karya, proyek yang pernah saya kerjakan, serta keahlian teknis yang saya miliki.
+Portofolio web pribadi yang dirancang untuk menampilkan proyek digital, keahlian (*skills*), dan latar belakang saya sebagai Junior Web Developer & UI/UX Designer.
 
 ---
 
-## 🚀 Fitur Utama
+## 🔗 Live Demo
+- **URL Website:** [https://zabran.netlify.app](https://zabran.netlify.app)
 
-- **Latar Belakang & Profil:** Informasi singkat mengenai latar belakang, minat, dan pengalaman saya.
-- **Daftar Proyek:** Showcasing proyek-proyek unggulan beserta deskripsi, teknologi yang digunakan, dan tautan demo/repositori.
-- **Keahlian Teknis:** Daftar bahasa pemrograman, *framework*, dan *tools* yang biasa saya gunakan.
-- **Kontak:** Akses cepat untuk menghubungi saya melalui media sosial atau surel.
+---
 
+## 🛠️ Tech Stack & Tools
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Libraries & Assets:** [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/), Google Fonts
+- **Design Tools:** Figma
+- **Deployment:** Netlify
 
+---
+
+## ✨ Features
+- **Responsive Layout:** Tampilan optimal di perangkat mobile, tablet, dan desktop.
+- **Interactive UI:** Smooth scrolling, animasi fade-up pada section, dan logo marquee.
+- **Bento Grid Layout:** Tampilan informasi *About Me* yang rapi dan modern.
+- **Lightweight & Fast:** Dibuat tanpa *framework* berat untuk kecepatan muat yang maksimal.
+
+---
+
+## 📂 Project Structure
+```text
+my-portfolio/
+├── assets/          # Media assets (images, icons, docs)
+├── css/             # Styling stylesheets
+├── js/              # JavaScript scripts
+├── index.html       # Main landing page
+└── staytoon.html    # Secondary pages
