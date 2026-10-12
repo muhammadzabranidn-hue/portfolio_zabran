@@ -25,6 +25,15 @@ Portofolio web pribadi yang dirancang untuk menampilkan proyek digital, keahlian
 
 ---
 
+## Langkah-Langkah Instalasi
+
+1. **Clone Repositori**  
+   Buka terminal atau Git Bash, lalu jalankan perintah berikut:
+   ```bash
+   git clone [https://github.com/muhammadzabranidn-hue/portfolio_zabran.git](https://github.com/muhammadzabranidn-hue/portfolio_zabran.git)
+
+---
+
 ## 📂 Project Structure
 ```text
 my-portfolio/
@@ -44,10 +53,3 @@ Ikuti langkah-langkah mudah di bawah ini untuk mengunduh dan menjalankan proyek 
 - Code Editor seperti [Visual Studio Code](https://code.visualstudio.com/) (direkomendasikan).
 
 ---
-
-### Langkah-Langkah Instalasi
-
-1. **Clone Repositori**  
-   Buka terminal atau Git Bash, lalu jalankan perintah berikut:
-   ```bash
-   git clone [https://github.com/muhammadzabranidn-hue/portfolio_zabran.git](https://github.com/muhammadzabranidn-hue/portfolio_zabran.git)
