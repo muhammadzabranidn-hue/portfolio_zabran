@@ -33,3 +33,21 @@ my-portfolio/
 ├── js/              # JavaScript scripts
 ├── index.html       # Main landing page
 └── staytoon.html    # Secondary pages
+
+## 💻 Cara Menjalankan Proyek Secara Lokal
+
+Ikuti langkah-langkah mudah di bawah ini untuk mengunduh dan menjalankan proyek portofolio ini di komputer lokal kamu:
+
+### Prasyarat
+- [Git](https://git-scm.com/) sudah terinstal di komputer kamu.
+- Browser modern (Chrome, Edge, Firefox, atau Safari).
+- Code Editor seperti [Visual Studio Code](https://code.visualstudio.com/) (direkomendasikan).
+
+---
+
+### Langkah-Langkah Instalasi
+
+1. **Clone Repositori**  
+   Buka terminal atau Git Bash, lalu jalankan perintah berikut:
+   ```bash
+   git clone [https://github.com/muhammadzabranidn-hue/portfolio_zabran.git](https://github.com/muhammadzabranidn-hue/portfolio_zabran.git)
