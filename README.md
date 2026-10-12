@@ -10,3 +10,5 @@ Selamat datang di repositori portofolio pribadi saya. Proyek ini dibuat untuk me
 - **Daftar Proyek:** Showcasing proyek-proyek unggulan beserta deskripsi, teknologi yang digunakan, dan tautan demo/repositori.
 - **Keahlian Teknis:** Daftar bahasa pemrograman, *framework*, dan *tools* yang biasa saya gunakan.
 - **Kontak:** Akses cepat untuk menghubungi saya melalui media sosial atau surel.
+
+
