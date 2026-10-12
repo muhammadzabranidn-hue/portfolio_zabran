@@ -43,13 +43,4 @@ my-portfolio/
 ├── index.html       # Main landing page
 └── staytoon.html    # Secondary pages
 
-## 💻 Cara Menjalankan Proyek Secara Lokal
-
-Ikuti langkah-langkah mudah di bawah ini untuk mengunduh dan menjalankan proyek portofolio ini di komputer lokal kamu:
-
-### Prasyarat
-- [Git](https://git-scm.com/) sudah terinstal di komputer kamu.
-- Browser modern (Chrome, Edge, Firefox, atau Safari).
-- Code Editor seperti [Visual Studio Code](https://code.visualstudio.com/) (direkomendasikan).
-
 ---
